@@ -1,0 +1,13 @@
+! Management hardening reference
+no ip http server
+no ip http secure-server
+ip ssh version 2
+line vty 0 4
+ transport input ssh
+ login local
+
+! Recommended additions where supported:
+! - management-plane ACL
+! - exec-timeout
+! - login block-for
+! - service password-encryption (legacy protection only; not a substitute for secrets)

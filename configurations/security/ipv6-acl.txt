@@ -1,0 +1,7 @@
+! Example IPv6 ACL pattern from the project, cleaned of ambiguity.
+ipv6 access-list BLOCK_SELECTED_IPV6
+ deny icmp 2001::2/128 2001:DB8:3::1/128
+ permit ipv6 any any
+
+interface <TARGET_INTERFACE>
+ ipv6 traffic-filter BLOCK_SELECTED_IPV6 in

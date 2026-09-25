@@ -1,0 +1,24 @@
+! Reference Zone-Based Firewall policy pattern
+zone security INSIDE
+zone security OUTSIDE
+zone security DMZ
+
+class-map type inspect match-any INSIDE_PROTOCOLS
+ match protocol ip
+
+class-map type inspect match-any DMZ_PROTOCOLS
+ match protocol http
+ match protocol https
+ match protocol smtp
+ match protocol imap
+
+policy-map type inspect INSIDE_TO_OUTSIDE
+ class type inspect INSIDE_PROTOCOLS
+  inspect
+
+policy-map type inspect OUTSIDE_TO_DMZ
+ class type inspect DMZ_PROTOCOLS
+  inspect
+
+zone-pair security INSIDE_TO_OUTSIDE source INSIDE destination OUTSIDE
+ service-policy type inspect INSIDE_TO_OUTSIDE

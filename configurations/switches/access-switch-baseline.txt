@@ -1,0 +1,26 @@
+! Clean reference baseline - replace placeholders before lab use
+hostname SW-ACCESS
+ip domain-name example.local
+banner motd ^CUnauthorized access prohibited^C
+enable secret <ENABLE_SECRET>
+username <ADMIN_USER> privilege 15 secret <ADMIN_SECRET>
+crypto key generate rsa modulus 2048
+ip ssh version 2
+line vty 0 4
+ login local
+ transport input ssh
+
+! Example VLANs
+vlan 50
+ name USERS_50
+vlan 60
+ name USERS_60
+vlan 70
+ name USERS_70
+vlan 80
+ name MANAGEMENT
+
+! Example trunk
+interface g0/2
+ switchport mode trunk
+ switchport trunk allowed vlan 50,60,70,80

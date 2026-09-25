@@ -1,0 +1,13 @@
+! Reference only. Do not publish real shared secrets.
+router ospf 1
+ area 0 authentication message-digest
+
+interface <OSPF_INTERFACE>
+ ip ospf message-digest-key 1 md5 <OSPF_SHARED_SECRET>
+ ip ospf authentication message-digest
+
+! HMAC-SHA-256 key-chain pattern where supported
+key chain <KEY_CHAIN_NAME>
+ key 1
+  key-string <OSPF_SHA256_SECRET>
+  cryptographic-algorithm hmac-sha-256
