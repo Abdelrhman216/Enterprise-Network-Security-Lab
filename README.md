@@ -53,8 +53,13 @@ The repository includes the original Packet Tracer topology plus cleaned, organi
                           VLANs / Segments  VLANs
 ```
 
-See [`topology/network-topology.png`](topology/network-topology.png) for the Packet Tracer topology and [`topology/subnetting-table.png`](topology/subnetting-table.png) for the subnetting reference.
+### Network Topology
 
+![Enterprise Network Security Topology](topology/network-topology.png)
+
+### Subnetting Reference
+
+![Subnetting Table](topology/subnetting-table.png)
 ## Security Controls
 
 | Control | Purpose | Status |
